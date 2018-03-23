@@ -1,0 +1,17 @@
+body{
+	margin:50px;
+}
+h1, h4{
+	font-family: Times, serif;
+}
+.error{
+	color:red;
+	font-family: Times, serif;
+}
+
+.sorted{
+	color:green;
+	font-size:20px;
+	font-family: Times, serif;
+	text-decoration-line: underline;
+}

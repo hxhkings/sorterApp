@@ -1,0 +1,21 @@
+{
+    "name": "hxhronie/phpunit",
+    "description": "Phpunit testing files",
+    "require": {
+        "phpunit/phpunit": "^6.5"
+    },
+
+    "autoload": {
+
+    	"psr-4": {
+    		"App\\Controllers\\": "controllers/",
+    		"App\\Models\\": "models/",
+    		"App\\Builder\\": "common/builder",
+    		"App\\Interfaces\\": "common/interface",
+            "App\\Abstracts\\": "common/abstract",
+            "Lib\\Units\\": "../lib/test/unit",
+            "App\\Factory\\": "factories/"
+    	}
+    }
+}
+
