@@ -13,8 +13,8 @@ class SortingFactory
 
 	public function doStringSorting(string $string)
 	{
-		$class = '\\Lib\\Units\\'.ucfirst($this->method) . 'Sort';
-		$stringSorter = (new \Lib\Units\StringSorter(new $class, new \Lib\Units\StringValidator));
+		$sortClass = '\\Lib\\Units\\'.ucfirst($this->method) . 'Sort';
+		$stringSorter = (new \Lib\Units\StringSorter(new $sortClass, new \Lib\Units\StringValidator));
 		$cleanString = (new \Lib\Units\UserInput)->setString($string)->getString();
 
 		return $this->sortResultDecorator($stringSorter->sortedString($cleanString));
