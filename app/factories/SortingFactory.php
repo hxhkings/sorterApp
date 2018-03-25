@@ -38,10 +38,10 @@ class SortingFactory
 	public function doStringSorting(string $string)
 	{
 		$class = '\\App\\Controllers\\'.ucfirst($this->method) . 'Sort';
-		$stringValidator = (new \App\Controllers\StringSorter(new $class, new \App\Controllers\StringValidator));
+		$stringSorter = (new \App\Controllers\StringSorter(new $class, new \App\Controllers\StringValidator));
 		$cleanString = (new \App\Builder\UserInput)->setString($string)->getString();
 
-		return $this->sortResultDecorator($stringValidator->sortedString($cleanString));
+		return $this->sortResultDecorator($stringSorter->sortedString($cleanString));
 	}
 
 	/**
