@@ -12,7 +12,7 @@ namespace App\Factory;
 class SortingFactory
 {
 	/**
-	 * @var string @method contains sorting method
+	 * @var string $method contains sorting method
 	 */
 	private $method;
 
