@@ -9,27 +9,27 @@ class StringValidatorTest extends TestCase
 	public function is_string_alphanumeric()
 	{
 		$string = 'abnccss';
-		$actual = (new \Lib\Units\StringValidator)->isAlphanumeric($string);
+		$actual = (new \App\Controllers\StringValidator)->isAlphanumeric($string);
 
 		$this->assertTrue($actual);
 
 		$string = 'bbss1222';
-		$actual = (new \Lib\Units\StringValidator)->isAlphanumeric($string);
+		$actual = (new \App\Controllers\StringValidator)->isAlphanumeric($string);
 
 		$this->assertTrue($actual);
 
 		$string = '--+ sss';
-		$actual = (new \Lib\Units\StringValidator)->isAlphanumeric($string);
+		$actual = (new \App\Controllers\StringValidator)->isAlphanumeric($string);
 
 		$this->assertFalse($actual);
 
 		$string = '';
-		$actual = (new \Lib\Units\StringValidator)->isAlphanumeric($string);
+		$actual = (new \App\Controllers\StringValidator)->isAlphanumeric($string);
 
 		$this->assertFalse($actual);
 
 		$string = ' die(); ';
-		$actual = (new \Lib\Units\StringValidator)->isAlphanumeric($string);
+		$actual = (new \App\Controllers\StringValidator)->isAlphanumeric($string);
 
 		$this->assertFalse($actual);
 	}

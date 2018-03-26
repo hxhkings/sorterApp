@@ -10,9 +10,9 @@ class StringSorterIntegrationTest extends TestCase
 
 	protected function setUp()
 	{
-		$this->validator = new \Lib\Units\StringValidator;
-		$this->method1 = new \Lib\Units\MergeSort;
-		$this->method2 = new \Lib\Units\BubbleSort;
+		$this->validator = new \App\Controllers\StringValidator;
+		$this->method1 = new \App\Controllers\MergeSort;
+		$this->method2 = new \App\Controllers\BubbleSort;
 	}
 
 	/** @test */
@@ -21,12 +21,12 @@ class StringSorterIntegrationTest extends TestCase
 	{
 
 		$bool = true;
-		$actual = (new \Lib\Units\StringSorter($this->method1, $this->validator))->isSortable($bool);
+		$actual = (new \App\Controllers\StringSorter($this->method1, $this->validator))->isSortable($bool);
 
 		$this->assertTrue($actual);
 
 		$bool = false;
-		$actual = (new \Lib\Units\StringSorter($this->method2, $this->validator))->isSortable($bool);
+		$actual = (new \App\Controllers\StringSorter($this->method2, $this->validator))->isSortable($bool);
 
 		$this->assertFalse($actual);
 	} 
@@ -36,45 +36,45 @@ class StringSorterIntegrationTest extends TestCase
 	public function sort_string_in_ascending_order()
 	{
 		$string = 'avfdrgdd5343';
-		$expected = '3345adddfgrv';
-		$actual = (new \Lib\Units\StringSorter($this->method1, $this->validator))->sortedString($string);
+		$expected = '<span class="sorted">3345adddfgrv</span>';
+		$actual = (new \App\Controllers\StringSorter($this->method1, $this->validator))->sortedString($string);
 
 		$this->assertTrue($this->validator->isAlphanumeric($string));
 		$this->assertEquals($expected, $actual);
 
 		$string = 'avfdrgdd5343';
-		$expected = '3345adddfgrv';
-		$actual = (new \Lib\Units\StringSorter($this->method2, $this->validator))->sortedString($string);
+		$expected = '<span class="sorted">3345adddfgrv</span>';
+		$actual = (new \App\Controllers\StringSorter($this->method2, $this->validator))->sortedString($string);
 
 		$this->assertEquals($expected, $actual);
 
 		$string = '_ass_ ';
-		$expected = 'The input must be alphanumeric.';
-		$actual = (new \Lib\Units\StringSorter($this->method2, $this->validator))->sortedString($string);
+		$expected = '<p class="error"> The input must be alphanumeric.</p>';
+		$actual = (new \App\Controllers\StringSorter($this->method2, $this->validator))->sortedString($string);
 
 		$this->assertEquals($expected, $actual);
 
 		$string = ' ';
-		$expected = 'The input must be alphanumeric.';
-		$actual = (new \Lib\Units\StringSorter($this->method2, $this->validator))->sortedString($string);
+		$expected = '<p class="error"> The input must be alphanumeric.</p>';
+		$actual = (new \App\Controllers\StringSorter($this->method2, $this->validator))->sortedString($string);
 
 		$this->assertEquals($expected, $actual);
 
 		$string = '';
-		$expected = 'The input must be alphanumeric.';
-		$actual = (new \Lib\Units\StringSorter($this->method2, $this->validator))->sortedString($string);
+		$expected = '<p class="error"> The input must be alphanumeric.</p>';
+		$actual = (new \App\Controllers\StringSorter($this->method2, $this->validator))->sortedString($string);
 
 		$this->assertEquals($expected, $actual);
 
 		$string = 'avfdrgdd5343';
-		$expected = 'Something went wrong.';
-		$actual = (new \Lib\Units\StringSorter($this->method2))->sortedString($string);
+		$expected = '<p class="error">Something went wrong.</p>';
+		$actual = (new \App\Controllers\StringSorter($this->method2))->sortedString($string);
 
 		$this->assertEquals($expected, $actual);
 
 		$string = 'avfdrgdd5343';
-		$expected = 'Something went wrong.';
-		$actual = (new \Lib\Units\StringSorter(null, $this->validator))->sortedString($string);
+		$expected = '<p class="error">Something went wrong.</p>';
+		$actual = (new \App\Controllers\StringSorter(null, $this->validator))->sortedString($string);
 
 		$this->assertEquals($expected, $actual);
 	}

@@ -12,34 +12,34 @@ namespace App\Factory;
 class SortingFactory
 {
 	/**
-	 * @var string $method contains sorting method
+	 * @var string $method contains sorting builder used
 	 */
-	private $method;
+	private $sortBuilder;
 
 	/**
 	 *
 	 * Assigns the method to the method property
 	 *
-	 * @param string $method the sorting method to be used
+	 * @param string $method the sorting builder to be used
 	 * @return none
 	 */
-	public function __construct(string $method)
+	public function __construct(\App\Builder\UserInput $builder)
 	{
-		$this->method = $method;
+		$this->sortBuilder = $builder;
 	}
 
 	/**
 	 *
 	 * Combines all necessay methods to sort string
 	 * 
-	 * @param string $string the string to sort
+	 * @param none
 	 * @return string the decorated sorted string
 	 */
-	public function doStringSorting(string $string)
+	public function doStringSorting()
 	{
-		$sortClass = '\\App\\Controllers\\'.ucfirst($this->method) . 'Sort';
+		$sortClass = '\\App\\Controllers\\'.$this->sortBuilder->getSortingStrategy() . 'Sort';
 		$stringSorter = (new \App\Controllers\StringSorter(new $sortClass, new \App\Controllers\StringValidator));
-		$cleanString = (new \App\Builder\UserInput)->setString($string)->getString();
+		$cleanString = $this->sortBuilder->getStringToSort();
 
 		return $this->sortResultDecorator($stringSorter->sortedString($cleanString));
 	}
@@ -54,6 +54,6 @@ class SortingFactory
 	 */
 	private function sortResultDecorator($result) 
 	{
-		return 'Result using ' . ucfirst($this->method) . ' Sort => ' . $result;
+		return 'Result using ' . $this->sortBuilder->getSortingStrategy() . ' Sort => ' . $result;
 	}
 }

@@ -12,9 +12,14 @@ namespace App\Builder;
 class UserInput
 {
 	/**
-	 * @var string $string the input string
+	 * @var string $stringToSort the input string for sorting
 	 */
-	private $string;
+	private $stringToSort;
+
+	/**
+	 * @var string $strategy the sorting method
+	 */
+	private $strategy;
 
 	/**
 	 * Assigns sanitized string value to string property
@@ -22,9 +27,9 @@ class UserInput
 	 * @param string $string the string to be set
 	 * @return class this UserInput class
 	 */
-	public function setString(string $string)
+	public function setStringToSort(string $string)
 	{
-		$this->string = htmlspecialchars(trim($string));
+		$this->stringToSort = htmlspecialchars(trim($string));
 
 		return $this;
 	}
@@ -34,8 +39,30 @@ class UserInput
 	 *
 	 * @return string the sanitized string
 	 */
-	public function getString()
+	public function getStringToSort()
 	{
-		return $this->string;
+		return $this->stringToSort;
+	}
+
+	/**
+	 * Gets the sanitized strategy
+	 *
+	 * @return class the UserInput class
+	 */
+	public function setSortingStrategy(string $strategy)
+	{
+		$this->strategy = trim($strategy);
+
+		return $this;
+	}
+
+	/**
+	 * Gets the sorting method
+	 *
+	 * @return string the sorting method
+	 */
+	public function getSortingStrategy()
+	{
+		return $this->strategy;
 	}
 }

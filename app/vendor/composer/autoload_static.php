@@ -19,10 +19,6 @@ class ComposerStaticInit3235e4dc3f5aeb7fea90fd1ade58fb01
         array (
             'Webmozart\\Assert\\' => 17,
         ),
-        'L' => 
-        array (
-            'Lib\\Units\\' => 10,
-        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
@@ -49,10 +45,6 @@ class ComposerStaticInit3235e4dc3f5aeb7fea90fd1ade58fb01
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
-        ),
-        'Lib\\Units\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/../lib/test/unit',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

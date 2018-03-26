@@ -35,7 +35,7 @@ abstract class TypeSorter
 	 * assumes false if none given
 	 * @return bool $validation the result of validation
 	 */
-	protected function isSortable(bool $validation = false): bool
+	public function isSortable(bool $validation = false): bool
 	{
 		return $validation;
 	}

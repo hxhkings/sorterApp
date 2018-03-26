@@ -13,7 +13,6 @@
     		"App\\Builder\\": "common/builder",
     		"App\\Interfaces\\": "common/interface",
             "App\\Abstracts\\": "common/abstract",
-            "Lib\\Units\\": "../lib/test/unit",
             "App\\Factory\\": "factories/"
     	}
     }
