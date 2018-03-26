@@ -23,7 +23,7 @@ class SortingFactory
 	 * @param string $method the sorting builder to be used
 	 * @return none
 	 */
-	public function __construct(\App\Builder\UserInput $builder)
+	public function __construct($builder)
 	{
 		$this->sortBuilder = $builder;
 	}
